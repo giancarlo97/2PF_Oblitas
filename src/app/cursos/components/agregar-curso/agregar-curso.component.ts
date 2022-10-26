@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Curso } from 'src/app/models/curso';
-import { CursoService } from 'src/app/services/curso.service';
+import { CursoService } from 'src/app/cursos/services/curso.service';
 
 @Component({
   selector: 'app-agregar-curso',
@@ -22,8 +22,8 @@ export class AgregarCursoComponent implements OnInit {
       profesor: new FormControl(),
       inicio: new FormControl(),
       fin: new FormControl(),
-      inscripcionAbierta: new FormControl(),
-    })
+      inscripcionAbierta: new FormControl()
+    });
    }
 
    agregarCurso(){
