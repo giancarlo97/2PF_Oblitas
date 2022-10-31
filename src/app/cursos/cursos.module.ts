@@ -10,13 +10,15 @@ import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CursoService } from './services/curso.service';
 import { SharedModule } from '../shared/shared.module';
+import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.component';
 
 @NgModule({
   declarations: [
     ListaCursosComponent,
     AgregarCursoComponent,
     EditarCursoComponent,
-    CursosInicioComponent
+    CursosInicioComponent,
+    DetalleCursoComponent
   ],
   imports: [
     CommonModule,

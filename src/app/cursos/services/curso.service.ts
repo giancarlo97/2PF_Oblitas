@@ -46,9 +46,9 @@ export class CursoService {
     return this.cursosSubject.asObservable();
   }
 
-  obtenerCurso(id: number): Observable<Curso[]>{
+  obtenerCurso(id: number): Observable<Curso>{
     return this.obtenerCursos().pipe(
-      map((cursos: Curso[]) => cursos.filter((curso: Curso) => curso.id === id))
+      map((cursos: Curso[]) => cursos.filter((curso: Curso) => curso.id === id)[0])
     )
   }
 
