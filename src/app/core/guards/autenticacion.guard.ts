@@ -33,7 +33,17 @@ export class AutenticacionGuard implements CanActivate, CanActivateChild, CanDea
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+      return this.sesion.obtenerSesion().pipe(
+        map((sesion: Sesion) => {
+          if(sesion.usuarioActivo?.canActivateChild){
+            return true
+          }else{
+            alert("Acceso denegado")
+            this.router.navigate(['inicio']);
+            return false
+          }
+        })
+      );
   }
   canDeactivate(
     component: unknown,
@@ -45,6 +55,16 @@ export class AutenticacionGuard implements CanActivate, CanActivateChild, CanDea
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+      return this.sesion.obtenerSesion().pipe(
+        map((sesion: Sesion) => {
+          if(sesion.usuarioActivo?.canLoad){
+            return true
+          }else{
+            alert("Acceso denegado")
+            this.router.navigate(['inicio']);
+            return false
+          }
+        })
+      );
   }
 }

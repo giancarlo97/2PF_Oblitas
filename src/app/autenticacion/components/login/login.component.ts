@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SesionService } from 'src/app/core/services/sesion.service';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent implements OnInit {
     this.formulario = new FormGroup({
       usuario: new FormControl('Giancarlo'),
       contrasena: new FormControl('abc.123'),
-      admin: new FormControl(true)
+      admin: new FormControl(true),
+      canActivateChild: new FormControl(true),
+      canLoad: new FormControl(true)
     })    
   }
 
@@ -26,8 +29,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.formulario.value);
-    this.sesionService.login(this.formulario.value.usuario, this.formulario.value.contrasena, this.formulario.value.admin);
+    let usuario: Usuario = {
+      id: 0,
+      usuario: this.formulario.value.usuario,
+      contrasena: this.formulario.value.contrasena,
+      admin: this.formulario.value.admin,
+      canActivateChild: this.formulario.value.canActivateChild,
+      canLoad: this.formulario.value.canLoad
+    }
+    this.sesionService.login(usuario);
     this.router.navigate(['inicio']);
   }
 

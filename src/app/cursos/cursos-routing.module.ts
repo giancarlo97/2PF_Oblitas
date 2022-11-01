@@ -9,7 +9,7 @@ import { EditarCursoComponent } from './components/editar-curso/editar-curso.com
 import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
 
 const routes: Routes = [
-  {path: '', component: CursosInicioComponent , children: [
+  {path: '', component: CursosInicioComponent , canActivateChild: [AutenticacionGuard], children: [
     { path: 'listar', component: ListaCursosComponent },
     { path: 'editar', component: EditarCursoComponent },
     { path: 'agregar', component: AgregarCursoComponent, canActivate: [AutenticacionGuard, AdminGuard] },
