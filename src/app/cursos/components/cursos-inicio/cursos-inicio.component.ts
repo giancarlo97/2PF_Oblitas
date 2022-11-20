@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { CursoState } from 'src/app/models/curso.state';
+import { loadCursoss } from '../../state/cursos.actions';
 
 @Component({
   selector: 'app-cursos-inicio',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursosInicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store<CursoState>
+  ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(loadCursoss());
   }
-
 }

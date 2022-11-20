@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { SesionService } from 'src/app/core/services/sesion.service';
+import { loadSesionActiva } from 'src/app/core/state/sesion.actions';
+import { Sesion } from 'src/app/models/sesion';
 import { Usuario } from 'src/app/models/usuario';
 
 @Component({
@@ -14,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private sesionService: SesionService,
+    private store: Store<Sesion>,
     private router: Router
   ) {
     this.formulario = new FormGroup({
@@ -29,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    let usuario: Usuario = {
+    let u: Usuario = {
       id: 0,
       usuario: this.formulario.value.usuario,
       contrasena: this.formulario.value.contrasena,
@@ -37,8 +41,10 @@ export class LoginComponent implements OnInit {
       canActivateChild: this.formulario.value.canActivateChild,
       canLoad: this.formulario.value.canLoad
     }
-    this.sesionService.login(usuario);
-    this.router.navigate(['inicio']);
-  }
+    this.sesionService.login(u).subscribe((usuario: Usuario) => {
+      this.store.dispatch(loadSesionActiva({usuarioActivo: usuario}));
+    });
 
+    this.router.navigate(["inicio"]);
+  }
 }

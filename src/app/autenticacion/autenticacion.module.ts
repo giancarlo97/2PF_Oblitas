@@ -4,8 +4,6 @@ import { LoginComponent } from './components/login/login.component';
 import { AutenticacionRoutingModule } from './autenticacion-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-
-
 @NgModule({
   declarations: [
     LoginComponent
