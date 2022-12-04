@@ -20,5 +20,4 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
     this.sesion$ = this.store.select(selectSesionActiva);
   }
-
 }

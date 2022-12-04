@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CursoState } from 'src/app/models/curso.state';
-import { loadCursoss } from '../../state/cursos.actions';
+import { loadCursos } from '../../state/cursos.actions';
 
 @Component({
   selector: 'app-cursos-inicio',
@@ -15,6 +15,6 @@ export class CursosInicioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadCursoss());
+    this.store.dispatch(loadCursos());
   }
 }

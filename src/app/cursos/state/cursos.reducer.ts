@@ -11,13 +11,13 @@ export const estadoInicial: CursoState = {
 
 export const reducer = createReducer(
   estadoInicial,
-  on(CursosActions.loadCursoss, (state) => {
+  on(CursosActions.loadCursos, (state) => {
     return {...state, cargando: true }
   }),
-  on(CursosActions.loadCursossSuccess, (state, {cursos}) => {
+  on(CursosActions.loadCursosSuccess, (state, {cursos}) => {
     return {...state, cargando: false, cursos}
   }),
-  on(CursosActions.loadCursossFailure, (state, {error}) => {
+  on(CursosActions.loadCursosFailure, (state, {error}) => {
     return state
   }),
 );

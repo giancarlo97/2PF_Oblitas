@@ -43,7 +43,7 @@ export class CursoService {
       })
     }).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);    
+    ).subscribe(console.log);
   }
   editarCurso(curso: Curso){
     this.http.put<Curso>(`${environment.api}/cursos/${curso.id}`, curso).pipe(

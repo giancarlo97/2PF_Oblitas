@@ -6,7 +6,7 @@ import * as SesionActions from './sesion.actions';
 export const sesionFeatureKey = 'sesion';
 
 export const estadoInicial: Sesion = {
-  sesionActiva: false
+  sesionActiva: false,
 };
 
 export const reducer = createReducer(

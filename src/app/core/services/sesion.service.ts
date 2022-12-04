@@ -23,7 +23,7 @@ export class SesionService {
    }
 
    login(usuario: Usuario): Observable<Usuario>{
-    return this.http.get<Usuario[]>(`${environment.api}/usuarios`).pipe(
+    return this.http.get<Usuario[]>(`${environment.api}/usuario`).pipe(
       map((usuarios: Usuario[]) => {
         return usuarios.filter((u: Usuario) => u.usuario === usuario.usuario && u.contrasena===usuario.contrasena)[0]
       }));

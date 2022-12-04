@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.formulario = new FormGroup({
-      usuario: new FormControl('Giancarlo'),
-      contrasena: new FormControl('abc.123'),
+      usuario: new FormControl('Horacio.Jacobs58'),
+      contrasena: new FormControl('HzALk5ylnj5vvKy'),
       admin: new FormControl(true),
       canActivateChild: new FormControl(true),
       canLoad: new FormControl(true)
@@ -41,10 +41,11 @@ export class LoginComponent implements OnInit {
       canActivateChild: this.formulario.value.canActivateChild,
       canLoad: this.formulario.value.canLoad
     }
-    this.sesionService.login(u).subscribe((usuario: Usuario) => {
+      this.sesionService.login(u).subscribe((usuario: Usuario) => {
       this.store.dispatch(loadSesionActiva({usuarioActivo: usuario}));
     });
 
     this.router.navigate(["inicio"]);
   }
+
 }

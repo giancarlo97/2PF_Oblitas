@@ -19,12 +19,9 @@ export class DetalleCursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((parametros) => {
-      //console.log(parametros.get('id'))
       let id = parseInt(parametros.get('id') || '0');
 
       this.curso$ = this.cursoService.obtenerCurso(id)
-
     })
   }
-
 }

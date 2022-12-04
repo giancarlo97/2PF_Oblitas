@@ -37,8 +37,6 @@ export class EditarCursoComponent implements OnInit {
         imagen: parametros.get('imagen') || ''
       }
 
-      //this.id = parseInt( || '0');
-
       this.formulario = new FormGroup({
         nombre: new FormControl(this.curso.nombre,[Validators.required]),
         comision: new FormControl(this.curso.comision),
@@ -63,6 +61,8 @@ export class EditarCursoComponent implements OnInit {
       }
 
       this.cursoService.editarCurso(c);
+
+      alert(`${c.nombre} editado`);
 
       this.router.navigate(['cursos/listar'])
   };
