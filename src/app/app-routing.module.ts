@@ -16,6 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./usuarios/usuarios.module').then((m) => m.UsuariosModule),
     canLoad: [AutenticacionGuard]    
   },
+  {
+    path: 'inscripciones',
+    loadChildren: () => import('./inscripciones/inscripciones.module').then((m) => m.InscripcionesModule),
+    canLoad: [AutenticacionGuard]    
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: '**', component: PaginaNoEncontradaComponent }
 ];
